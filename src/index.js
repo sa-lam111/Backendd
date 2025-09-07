@@ -20,6 +20,8 @@ import express, { json } from "express";
 import { connect } from "mongoose";
 import userRoutes from "./routes/user.routes.js";
 import productRoutes from "./routes/products.routes.js";
+import emailRoutes from "./routes/email.routes.js";
+import orderRoutes from "./routes/order.routes.js";
 
 const app = express();
 app.use(json()); 
@@ -36,6 +38,8 @@ connect(process.env.MONGO_URL)
 
 app.use("/users", userRoutes);
 app.use("/products", productRoutes);
+app.use("/email", emailRoutes);
+app.use("/orders", orderRoutes);
 
 
 if (process.env.NODE_ENV !== 'test') {
